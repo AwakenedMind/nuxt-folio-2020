@@ -1,52 +1,50 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        nuxt-folio-2020
-      </h1>
-      <h2 class="subtitle">
-        My doozie Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+    
+    <div class="profession-year-container">
+    <div class="year">2020</div>
+    <div class="profession">Dev Frontend</div>
     </div>
-  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import Logo from '~/components/Logo.vue'
 
 export default Vue.extend({
   components: {
-    Logo
   }
 })
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+
+body {
+  font-family: 'Playfair Display', serif;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.profession-year-container {
+  position: absolute;
+  left: 3rem;
+  bottom: -3rem;
+  width: 50vmax;
+}
+
+.year {
+  text-orientation: sideways-right;
+  writing-mode: vertical-rl;
+  font-size: 2vmax;
+  font-weight: 500;
+  color: rgba(24,24,24,0.8);
+}
+
+.profession {
+  font-size: 12vmax;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: left;
+  color: rgba(24,24,24,0.8);
 }
 
 .title {
