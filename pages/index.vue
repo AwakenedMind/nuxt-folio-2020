@@ -1,32 +1,183 @@
 <template>
-    
-    <div class="profession-year-container">
-    <div class="year">2020</div>
-    <div class="profession">Dev Frontend</div>
+    <div>
+    <header>
+    <nav class="nav">
+    <div class="logo">RA</div>
+    <div class="nav-link">Experience</div>
+    <div class="nav-link">Contact</div>
+    </nav>
+    </header>
+      <main class="main">
+      <div class="bio">
+        <!-- <div class="bio-name">
+        Robert Arteaga
+        </div> -->
+        <div class="bio-summary">
+         Just a Creative Frontend Developer & Designer.
+        </div>
+        <div class="bio-summary-2">
+         Architecting Modern UI's That Empower Companies
+        </div>
+      </div>
+      </main>
+      <div class="designer-container">
+        <div class="designer">Designer</div>
+      </div>
+
+      <div class="developer-container">
+        <div class="year">2020</div>
+        <div class="developer">Developer</div>
+      </div>
+
+
+      <div class="work-availibility">
+        <div class="triangle-corner">
+        <span class="triangle-corner-span">Available for Hire</span>
+        </div>
+      </div>
+
+      <div class="circle-follow" ref="cursor"></div>
+
     </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
+import { TweenMax, TimelineMax } from "gsap"
 
-export default Vue.extend({
-  components: {
+export default {
+  mounted() {
+    const {cursor} = this.$refs
+    const cursorTimeline = new TimelineMax()
+
+    window.addEventListener("mousemove", e => {
+      if (getComputedStyle(e.target).backgroundColor === "rgb(24,24,24)") {
+        cursorTimeline.to(cursor, 0.35, {
+          x: e.clientX,
+          y: e.clientY,
+          scale: 1.5,
+          border: "2px solid #ffffff",
+        })
+      } else {
+        cursorTimeline.to(cursor, 0.25, {
+          x: e.clientX,
+          y: e.clientY,
+          scale: 1,
+          border: "2px solid black",
+        })
+      }
+  })
   }
-})
+}
 </script>
 
 <style>
+.bio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 1.8;
+}
+.bio-name {
+  font-size: 1em;
+  text-transform: lowercase;
+}
+
+.bio-summary {
+  font-size: 1.8em;
+}
+.bio-summary-2 {
+  font-size: 1.1em;
+}
+.nav-link {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-right: 2rem;
+    font-size: 0.9em;
+  }
+
+.nav{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 
 body {
   font-family: 'Playfair Display', serif;
   max-height: 100vh;
   overflow: hidden;
+  background: #fbfbfb;
+    -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: normal;
+  font-kerning: normal;
+  -moz-font-feature-settings: "kern", "liga", "clig", "calt";
+  -ms-font-feature-settings: "kern", "liga", "clig", "calt";
+  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
+  font-feature-settings: "kern", "liga", "clig", "calt";
 }
 
-.profession-year-container {
+.main {
+  padding-top: calc(10vmax - 4rem);
+  padding-bottom: 10vmax;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.work-availibility {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: white;
+  width: 20rem;
+  height: 20rem;
+}
+
+.triangle-corner {
+width: 0;
+height: 0;
+border-bottom: 20rem solid black;
+border-left: 20rem solid transparent;
+right: 0;
+margin-left: auto;
+}
+.triangle-corner-span {
+  position:absolute;
+  top: 20rem;
+  right: 20rem;
+  text-align: center;
+  font-size: 1em;
+  transform: rotate(-45deg);
+  display:block;
+}
+
+header {
+  width: 50vw;
+  height: 4rem;
+  padding-left: 3rem;
+  padding-top: 1rem;
+
+}
+.logo {
+  font-size: 2em;
+  padding-right: 3rem;
+}
+.developer-container {
   position: absolute;
   left: 3rem;
-  bottom: -3rem;
+  bottom: -3vmax;
+  width: 50vmax;
+}
+
+.designer-container {
+  position: absolute;
+  right: 3rem;
+  top: -3vmax;
   width: 50vmax;
 }
 
@@ -34,17 +185,26 @@ body {
   text-orientation: sideways-right;
   writing-mode: vertical-rl;
   font-size: 2vmax;
-  font-weight: 500;
-  color: rgba(24,24,24,0.8);
+  font-weight: 400;
+  color: rgb(24,24,24);
 }
 
-.profession {
-  font-size: 12vmax;
-  font-weight: 400;
+.designer {
+  font-size: 10vmax;
+  font-weight: inherit;
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: right;
+  color: rgba(24,24,24);
+}
+
+.developer {
+  font-size: 10vmax;
+  font-weight: inherit;
   line-height: 1;
   text-transform: uppercase;
   text-align: left;
-  color: rgba(24,24,24,0.8);
+  color: rgba(24,24,24);
 }
 
 .title {
@@ -67,5 +227,20 @@ body {
 
 .links {
   padding-top: 15px;
+}
+
+.circle-follow {
+  position: fixed;
+  border: 2px solid #222222;
+  width: 36px;
+  height: 36px;
+  left: -21px;
+  top: -21px;
+  border-radius: 100%;
+  z-index: 1;
+  user-select: none;
+  pointer-events: none;
+  z-index: 10000;
+  transform: scale(1);
 }
 </style>
