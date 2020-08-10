@@ -29,6 +29,10 @@
         <div class="developer">Developer</div>
       </div>
 
+      <div class="wip">
+      Work in Progress* as of 8/7
+      </div>
+
 
       <!-- <div class="work-availibility">
         <div class="triangle-corner">
@@ -52,7 +56,7 @@ export default {
     const cursorTimeline = gsap.timeline()
 
     window.addEventListener("mousemove", e => {
-      if (getComputedStyle(e.target).backgroundColor === "rgb(24,24,24)") {
+      if (getComputedStyle(e.target).backgroundColor === "rgb(0, 0, 0)") {
         cursorTimeline.to(cursor, 0.35, {
           x: e.clientX,
           y: e.clientY,
@@ -73,6 +77,9 @@ export default {
 </script>
 
 <style>
+
+.wip {position: absolute; 
+bottom: 1rem; right: 1rem}
 .bio {
   display: flex;
   justify-content: center;
