@@ -30,11 +30,13 @@
       </div>
 
 
-      <div class="work-availibility">
+      <!-- <div class="work-availibility">
         <div class="triangle-corner">
-        <span class="triangle-corner-span">Available for Hire</span>
+        <span class="triangle-corner-span">Available</span>
+        <span class="triangle-corner-span">For</span>
+        <span class="triangle-corner-span">Hire</span>
         </div>
-      </div>
+      </div> -->
 
       <div class="circle-follow" ref="cursor"></div>
 
@@ -43,12 +45,11 @@
 
 <script>
 import Vue from 'vue'
-import { TweenMax, TimelineMax } from "gsap"
-
+  import { gsap } from 'gsap';
 export default {
   mounted() {
     const {cursor} = this.$refs
-    const cursorTimeline = new TimelineMax()
+    const cursorTimeline = gsap.timeline()
 
     window.addEventListener("mousemove", e => {
       if (getComputedStyle(e.target).backgroundColor === "rgb(24,24,24)") {
@@ -131,29 +132,27 @@ body {
 
 .work-availibility {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  color: white;
+  right: -10rem;
+  bottom: -10rem;
   width: 20rem;
   height: 20rem;
 }
 
 .triangle-corner {
-width: 0;
-height: 0;
-border-bottom: 20rem solid black;
-border-left: 20rem solid transparent;
-right: 0;
-margin-left: auto;
+
+  border: black 1px solid;
+  height: 20rem;
+  width: 20rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: lowercase;
+
 }
 .triangle-corner-span {
-  position:absolute;
-  top: 20rem;
-  right: 20rem;
-  text-align: center;
-  font-size: 1em;
-  transform: rotate(-45deg);
-  display:block;
+  margin-right: 7.5rem;
+  margin-bottom: 7.5rem;
 }
 
 header {
